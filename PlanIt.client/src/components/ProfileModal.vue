@@ -74,6 +74,7 @@ export default {
       async EditProfile() {
         logger.log(state.editable)
         const res = await profileService.editProfile(state.editable)
+        state.editable = {}
       },
       User: computed(() => AppState.user)
     }
