@@ -21,9 +21,11 @@
             <b>Email:</b>
             {{ User.email }}
           </h6>
-          <button class="btn btn-outline-danger" @click="OpenModal()">
-            Modal
-          </button>
+          <div class="d-flex justify-content-end">
+            <button class="btn btn-outline-danger" @click="OpenModal()">
+              Edit Profile
+            </button>
+          </div>
         </div>
       </div>
     </div>
