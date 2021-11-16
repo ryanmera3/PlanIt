@@ -4,7 +4,7 @@ const ObjectId = mongoose.Types.ObjectId
 export const NotesSchema = new Schema(
   {
     body: { type: String, required: true },
-    taskId: { type: ObjectId, ref: 'Sprint', required: true },
+    taskId: { type: ObjectId, ref: 'Task', required: true },
     projectId: { type: ObjectId, ref: 'Project', required: true },
     creatorId: { type: ObjectId, ref: 'Profile', required: true },
     creator: { type: Object }
