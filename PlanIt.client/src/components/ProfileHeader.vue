@@ -6,7 +6,7 @@
         <div class="card-title p-2">
           <div class="d-flex align-items-center pb-2">
             <img class="profilepic" :src="User.picture" alt="Profile Picture" />
-            <h2 class="ps-2">- {{ User.nickname }}</h2>
+            <h2 class="ps-2">- {{ User.name }}</h2>
             <i
               class="ps-2 mdi mdi-account-check mdi-24px"
               v-if="User.email_verified"
@@ -42,7 +42,7 @@ import { Modal } from "bootstrap"
 export default {
   setup() {
     onMounted(() => {
-      logger.log(AppState.user)
+      logger.log(AppState.account)
     })
 
     return {
@@ -50,7 +50,7 @@ export default {
         const modal = Modal.getOrCreateInstance(document.getElementById('Profile-Modal'))
         modal.show()
       },
-      User: computed(() => AppState.user)
+      User: computed(() => AppState.account)
     }
   },
 }

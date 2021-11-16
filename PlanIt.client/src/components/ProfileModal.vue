@@ -36,16 +36,6 @@
                     required="true"
                   />
                 </div>
-                <div class="p-1">
-                  <h6 class="">Email:</h6>
-                  <input
-                    v-model="state.editable.email"
-                    type="text"
-                    class="form-text rounded tingy"
-                    placeholder="Where can people send their concerned emails ..."
-                    required="true"
-                  />
-                </div>
               </div>
               <div class="col-1"></div>
             </div>
