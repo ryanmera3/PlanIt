@@ -26,24 +26,15 @@
                     </div>
                   </div>
                 </div>
-                <div class="row py-3">
-                  <div class="col-md-4 text-primary lighten-25 ">
-                    <h3>PLACEHOLDER 1</h3>
-                    <h3>PLACEHOLDER 1</h3>
-                    <h3>PLACEHOLDER 1</h3>
-
+                <div class="row py-3" v-for="p in projects" :key="p.name">
+                  <div class="col-md-4 text-primary lighten-25" >
+                    <p>{{p.name}}</p>
                     </div>
-                  <div class="col-md-4 text-primary lighten-25 ">
-                    <h3>PLACEHOLDER MEMB</h3>
-                    <h3>PLACEHOLDER MEMB</h3>
-                    <h3>PLACEHOLDER MEMB</h3>
-                    
+                  <div class="col-md-4 text-primary lighten-25">
+                    <img class="rounded-circle img-fluid w-25" :src="p.creator?.picture" alt="">
                   </div>
                   <div class="col-md-4 text-primary lighten-25 ">
-                    <h3>PLACEHOLDER START</h3>
-                    <h3>PLACEHOLDER START</h3>
-                    <h3>PLACEHOLDER START</h3>
-                    
+                    <h6>{{new Date(p.createdAt).toLocaleString()}}</h6>
                   </div>
                 </div>
               </div>
@@ -59,15 +50,31 @@
 <script>
 import { Modal } from "bootstrap"
 import { useRouter } from "vue-router"
+import { AppState } from "../AppState"
+import { computed } from "@vue/reactivity"
+import { onMounted } from "@vue/runtime-core"
+import { logger } from "../utils/Logger"
+import { projectsService } from "../services/ProjectsService"
+import Pop from "../utils/Pop"
 export default {
   setup(){
     const router = useRouter()
+    onMounted(async ()=> {
+      try {
+        await projectsService.getProjects()
+      } catch (error) {
+        logger.error(error)
+        Pop.toast(error.message)
+      }
+    })
     return {
       name: "Home",
       async createModal(){
         const modalElem = document.getElementById("createproj-modal")
         Modal.getOrCreateInstance(modalElem).toggle()
-      }
+      },
+      projects: computed(()=> AppState.projects),
+      user: computed(()=> AppState.user)
       
     }
   }}
