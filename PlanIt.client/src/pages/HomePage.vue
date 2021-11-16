@@ -26,7 +26,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="row py-3" v-for="p in projects" :key="p.name">
+                <div class="row py-3 align-items-center" v-for="p in projects" :key="p.name">
                   <div class="col-md-4 text-primary lighten-25" >
                     <p>{{p.name}}</p>
                     </div>
