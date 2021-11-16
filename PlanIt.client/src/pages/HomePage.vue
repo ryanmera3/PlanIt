@@ -11,17 +11,15 @@
                   <p>a list of all the projects for</p>
               </div>
               <div class="col-md-4 text-end mx-4">
-                <button class="btn btn-outline-primary ">Create Project</button>
+                <button class="btn btn-outline-primary lighten-25" @click="createModal">Create Project</button>
               </div>
             </div>
             <div class="row justify-content-center">
               <div class="col-md-10 pt-3">
                 <div class="row ">
                   <div class="col-md-4 text-primary lighten-25 border-bottom border-2">NAME
-
                     </div>
                   <div class="col-md-4 text-primary lighten-25 border-bottom border-2">MEMBERS
-                    
                   </div>
                   <div class="col-md-4 text-primary lighten-25 border-bottom border-2">STARTED
                     <div class="div">
@@ -59,10 +57,22 @@
 </template>
 
 <script>
+import { Modal } from "bootstrap"
+import { useRouter } from "vue-router"
 export default {
-  name: 'Home'
-}
+  setup(){
+    const router = useRouter()
+    return {
+      name: "Home",
+      async createModal(){
+        const modalElem = document.getElementById("createproj-modal")
+        Modal.getOrCreateInstance(modalElem).toggle()
+      }
+      
+    }
+  }}
 </script>
+
 
 <style scoped lang="scss">
 .home{

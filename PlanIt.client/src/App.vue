@@ -4,6 +4,7 @@
   </header>
   <main>
     <router-view />
+    <CreateProjectModal />
   </main>
 
 </template>
