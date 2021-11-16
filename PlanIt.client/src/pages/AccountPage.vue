@@ -1,19 +1,18 @@
 <template>
-  <div class="about text-center">
-    <h1>Welcome {{ account.name }}</h1>
-    <img class="rounded" :src="account.picture" alt="" />
-    <p>{{ account.email }}</p>
+  <div class="container-fluid">
+    <ProfileHeader />
   </div>
+  <ProfileModal id="Profile-Modal" />
 </template>
 
 <script>
-import { computed } from 'vue'
+import { computed, onMounted } from 'vue'
 import { AppState } from '../AppState'
 export default {
   name: 'Account',
   setup() {
     return {
-      account: computed(() => AppState.account)
+
     }
   }
 }
