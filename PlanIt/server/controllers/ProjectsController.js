@@ -35,6 +35,7 @@ export class ProjectsController extends BaseController {
   async createProject(req, res, next) {
     try {
       req.body.creatorId = req.userInfo.id
+      req.body.creator = req.userInfo
       const newProject = await projectsService.createProject(req.body)
       newProject.creator = req.userInfo
       return res.send(newProject)
