@@ -1,8 +1,8 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-white px-3 elevation-3">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-white px-3 elevation-3 roboto">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
       <div class="d-flex flex-column align-items-center">
-        <h1 class="mdi mdi-rocket-launch-outline text-primary">PlanIt</h1>
+        <h1 class="mdi mdi-rocket-launch-outline text-primary lighten-25">PlanIt</h1>
       </div>
     </router-link>
     <button
@@ -19,14 +19,14 @@
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav me-auto">
         <li>
-          <router-link :to="{ name: 'Project' }" class="btn text-primary  selectable text-uppercase">
+          <router-link :to="{ name: 'Project' }" class="btn text-primary lighten-25  selectable text-uppercase">
             Projects
           </router-link>
         </li>
       </ul>
       <span class="navbar-text">
         <button
-          class="btn selectable text-primary text-uppercase my-2 my-lg-0"
+          class="btn selectable text-primary text-uppercase my-2 my-lg-0 lighten-25"
           @click="login"
           v-if="!user.isAuthenticated"
         >
@@ -46,7 +46,7 @@
               height="40"
               class="rounded"
             />
-            <span class="mx-3 text-primary">{{ user.name }}</span>
+            <span class="mx-3 text-primary lighten-25">{{ user.name }}</span>
           </div>
           <div
             class="dropdown-menu p-0 list-group w-100"
@@ -113,5 +113,8 @@ a:hover {
   border-bottom: 2px solid var(--bs-success);
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
+}
+.roboto{
+  font-family: 'Roboto', sans-serif;
 }
 </style>
