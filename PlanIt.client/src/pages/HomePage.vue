@@ -1,7 +1,14 @@
 <template>
   <div class="container-fluid roboto">
     <div class="row">
-      <div class="col-1"></div>
+      <div class="col-1">
+
+<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+  Button with data-bs-target
+</button>
+
+
+      </div>
       <div class="col-10 text-center">
         <div class="card mt-5 elevation-3">
           <div class="card-body">
