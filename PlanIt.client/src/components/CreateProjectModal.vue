@@ -6,23 +6,27 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title text-primary lighten-25">Modal title</h5>
+        <h5 class="modal-title text-primary lighten-25">Create Project</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body text-primary lighten-25">
+      <div class="modal-body ">
+        <div class="my-2">
+          <h5>Name</h5>
         <input
                     v-model="state.editable.name"
                     type="text"
-                    class="form-text rounded tingy"
-                    placeholder="Project Name .."
+                    class="form-text rounded tingy w-100"
+                    placeholder="Project Name.."
                     required="true"
                   />
 
+        </div>
+        <h5>Description</h5>
         <input
                     v-model="state.editable.description"
                     type="text"
-                    class="form-text rounded tingy"
-                    placeholder="Project Description .."
+                    class="form-text rounded tingy w-100"
+                    placeholder="Project Description.."
                     required="true"
                   />
       </div>
