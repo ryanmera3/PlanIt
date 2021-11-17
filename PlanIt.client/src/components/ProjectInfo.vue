@@ -25,11 +25,13 @@ import { AppState } from "../AppState"
 import { onMounted } from "@vue/runtime-core"
 import { sprintsService } from "../services/SprintsService"
 import Pop from "../utils/Pop"
+import { useRoute } from "vue-router"
 export default {
   setup() {
+    const route = useRoute()
     onMounted(async () => {
       try {
-        await sprintsService.getSprints()
+        await sprintsService.getSprints(route.params.id)
       } catch (error) {
         Pop.toast(error)
       }
