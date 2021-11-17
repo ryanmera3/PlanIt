@@ -11,7 +11,7 @@
               {{ Project.description }}
             </h5>
             <button
-              class="btn btn-outline-success"
+              class="btn btn-outline-primary"
               data-bs-target="#sprintModal"
               data-bs-toggle="modal"
             >
@@ -19,9 +19,9 @@
             </button>
           </div>
           <div class="container p-3">
-            <div class="row" :v-for="s in Sprints" key="s.id">
+            <div class="row" v-for="s in Sprints" :key="s.id">
               <div class="col-12">
-                <Sprints />
+                <Sprints :sprint="s" />
               </div>
             </div>
           </div>
