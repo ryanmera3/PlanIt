@@ -16,7 +16,7 @@
                     v-model="state.editable.name"
                     type="text"
                     class="form-text rounded tingy w-100 border-1 border-light"
-                    :placeholder="activeProject.name"
+                    placeholder="Project Name.."
                     required="true"
                   />
 
@@ -26,7 +26,7 @@
                     v-model="state.editable.description"
                     type="text"
                     class="form-text rounded tingy w-100 border-1 border-light "
-                    :placeholder="activeProject.description"
+                    placeholder="Project Description.."
                     required="true"
                   />
       </div>
