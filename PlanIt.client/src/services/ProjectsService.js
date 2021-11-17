@@ -14,6 +14,7 @@ class ProjectsService {
     const res = await api.post('api/projects', body)
     logger.log(res.data)
     AppState.projects.unshift(res.data)
+    return res.data
   }
   async removeProject(id){
     const res = await api.delete('api/projects/' + id)

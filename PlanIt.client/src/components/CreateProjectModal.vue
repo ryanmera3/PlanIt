@@ -59,8 +59,14 @@ export default {
       
       async createProject() {
         logger.log(state.editable)
-        await projectsService.createProject(state.editable)
+        const res = await projectsService.createProject(state.editable)
+        const modalElem = document.getElementById('createproj-modal')
+        Modal.getOrCreateInstance(modalElem).toggle()
         state.editable = {}
+        router.push({
+          name: "Project",
+          params: {id: res.id}
+        })
       },
       projects: computed(()=> AppState.projects)
       
