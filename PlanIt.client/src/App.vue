@@ -5,6 +5,7 @@
   <main>
     <router-view />
     <CreateProjectModal />
+    <ProjectSelector />
   </main>
 </template>
 
