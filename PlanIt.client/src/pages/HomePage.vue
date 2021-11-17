@@ -33,8 +33,9 @@
                   <div class="col-md-4 text-primary lighten-25">
                     <img class="rounded-circle img-fluid w-25" :src="p.creator?.picture" alt="">
                   </div>
-                  <div class="col-md-4 text-primary lighten-25 ">
-                    <h6>{{new Date(p.createdAt).toLocaleString()}}</h6>
+                  <div class="col-md-4 text-primary lighten-25 d-flex justify-content-center align-items-middle">
+                    <h6 class="align-self-end d-flex mx-3">{{new Date(p.createdAt).toLocaleString()}}</h6>
+                    <button class=" btn btn-outline-danger mdi mdi-delete selectable" @click="removeProject(p.id)"></button>
                   </div>
                 </div>
               </div>
@@ -72,6 +73,14 @@ export default {
       async createModal(){
         const modalElem = document.getElementById("createproj-modal")
         Modal.getOrCreateInstance(modalElem).toggle()
+      },
+      async removeProject(id){
+        try {
+          await projectsService.removeProject(id)
+        } catch (error) {
+          logger.log(error)
+          Pop.toast(error.message)
+        }
       },
       projects: computed(()=> AppState.projects),
       user: computed(()=> AppState.user)
