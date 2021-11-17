@@ -13,7 +13,7 @@
               <div class="col-md-4 text-end mx-4">
                 <button
                   class="btn btn-outline-primary lighten-25"
-                  @click="createModal(p.id)"
+                  @click="createModal()"
                 >
                   Create Project
                 </button>
