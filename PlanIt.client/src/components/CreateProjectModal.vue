@@ -57,10 +57,11 @@ export default {
     return {
       state,
       
-      async createProject() {
+      async createProject(id) {
         logger.log(state.editable)
         await projectsService.createProject(state.editable)
         state.editable = {}
+        router.push({path: '/project/' + id})
       },
       projects: computed(()=> AppState.projects)
       

@@ -11,7 +11,7 @@
                   <p>a list of all the projects for</p>
               </div>
               <div class="col-md-4 text-end mx-4">
-                <button class="btn btn-outline-primary lighten-25" @click="createModal">Create Project</button>
+                <button class="btn btn-outline-primary lighten-25" @click="createModal(p.id)">Create Project</button>
               </div>
             </div>
             <div class="row justify-content-center">
@@ -26,7 +26,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="row py-3 align-items-center" v-for="p in projects" :key="p.name">
+                <div class="row py-3 align-items-center selectable" v-for="p in projects" :key="p.name">
                   <div class="col-md-4 text-primary lighten-25" >
                     <p>{{p.name}}</p>
                     </div>
