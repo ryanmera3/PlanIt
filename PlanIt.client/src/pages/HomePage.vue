@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-1">
 
-<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#proj-offcanvas" aria-controls="offcanvasExample" @click="ProjectSelector">
   Button with data-bs-target
 </button>
 
@@ -139,6 +139,10 @@ export default {
       async createModal() {
         const modalElem = document.getElementById("createproj-modal")
         Modal.getOrCreateInstance(modalElem).toggle()
+      },
+      async selectorCanvas(){
+        const canvasElem = document.getElementById('project-offcanvas')
+        Modal.getOrCreateInstance(canvasElem).toggle()
       },
       async removeProject(id) {
         try {
