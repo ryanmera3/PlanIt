@@ -15,7 +15,7 @@
         <input
                     v-model="state.editable.name"
                     type="text"
-                    class="form-text rounded tingy w-100"
+                    class="form-text rounded tingy w-100 border-1 border-light"
                     placeholder="Project Name.."
                     required="true"
                   />
@@ -25,7 +25,7 @@
         <input
                     v-model="state.editable.description"
                     type="text"
-                    class="form-text rounded tingy w-100"
+                    class="form-text rounded tingy w-100 border-1 border-light "
                     placeholder="Project Description.."
                     required="true"
                   />
@@ -44,7 +44,7 @@
 
 
 <script>
-import { Modal } from "bootstrap"
+import { Modal, Offcanvas } from "bootstrap"
 import { useRouter } from "vue-router"
 import { projectsService } from "../services/ProjectsService"
 import { computed, reactive } from "@vue/reactivity"
@@ -59,13 +59,15 @@ export default {
     const state = reactive({ editable: {} })
     const router = useRouter()
     return {
+      
       state,
       
       async createProject() {
-        logger.log(state.editable)
         const res = await projectsService.createProject(state.editable)
         const modalElem = document.getElementById('createproj-modal')
+        const canvasElem = document.getElementById("proj-offcanvas")
         Modal.getOrCreateInstance(modalElem).toggle()
+        Offcanvas.getOrCreateInstance(canvasElem).hide()
         state.editable = {}
         router.push({
           name: "Project",
