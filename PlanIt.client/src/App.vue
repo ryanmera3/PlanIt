@@ -10,11 +10,20 @@
 </template>
 
 <script>
-import { computed } from 'vue'
+import { computed, onMounted } from 'vue'
 import { AppState } from './AppState'
+import { projectsService } from "./services/ProjectsService"
+import { logger } from "./utils/Logger"
 export default {
   name: 'App',
   setup() {
+    onMounted(async () => {
+      try {
+        await projectsService.getProjects()
+      } catch (error) {
+        logger.log(error)
+      }
+    })
     return {
       appState: computed(() => AppState)
     }

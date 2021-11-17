@@ -23,8 +23,9 @@ class ProjectsService {
     AppState.projects.splice(found, 1)
     logger.log(AppState.projects)
   }
-  async setActive(id) {
-    const active = AppState.projects.find(p => p.id === id)
+  async setActive(projectid) {
+    const active = AppState.projects.find(p => p.id === projectid)
+    logger.log('active', active)
     AppState.activeProject = active
   }
 }

@@ -2,12 +2,16 @@
   <div class="container-fluid roboto">
     <div class="row">
       <div class="col-1">
-
-<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#proj-offcanvas" aria-controls="offcanvasExample" @click="ProjectSelector">
-  Button with data-bs-target
-</button>
-
-
+        <button
+          class="btn btn-primary"
+          type="button"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#proj-offcanvas"
+          aria-controls="offcanvasExample"
+          @click="ProjectSelector"
+        >
+          Button with data-bs-target
+        </button>
       </div>
       <div class="col-10 text-center">
         <div class="card mt-5 elevation-3">
@@ -120,14 +124,6 @@ import Pop from "../utils/Pop"
 export default {
   setup() {
     const router = useRouter()
-    onMounted(async () => {
-      try {
-        await projectsService.getProjects()
-      } catch (error) {
-        logger.error(error)
-        Pop.toast(error.message)
-      }
-    })
     return {
       name: "Home",
       Push(id) {
@@ -140,7 +136,7 @@ export default {
         const modalElem = document.getElementById("createproj-modal")
         Modal.getOrCreateInstance(modalElem).toggle()
       },
-      async selectorCanvas(){
+      async selectorCanvas() {
         const canvasElem = document.getElementById('project-offcanvas')
         Modal.getOrCreateInstance(canvasElem).toggle()
       },
