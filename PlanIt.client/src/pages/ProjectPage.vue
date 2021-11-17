@@ -8,6 +8,7 @@
       <div class="col-1"></div>
     </div>
   </div>
+  <SprintModal />
 </template>
 
 
@@ -21,9 +22,7 @@ export default {
   setup() {
     const route = useRoute();
     onMounted(async () => {
-      logger.log(route.params.id)
       projectsService.setActive(route.params.id)
-      logger.log(AppState.activeProject)
     })
     return {}
   }
