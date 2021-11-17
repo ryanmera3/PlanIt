@@ -29,7 +29,7 @@
 
       <div class="modal-footer" >
         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-outline-primary">Save changes</button>
+        <button type="submit" class="btn btn-outline-primary">Create Project</button>
       </div>
     </div>
   </div>

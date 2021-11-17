@@ -1,24 +1,26 @@
 <template>
   <div class="project-selector">
 
-<div class="offcanvas offcanvas-start" tabindex="-1" id="proj-offcanvas" aria-labelledby="offcanvasExampleLabel">
+<div class="offcanvas offcanvas-start w-25" tabindex="-1" id="proj-offcanvas" aria-labelledby="offcanvasExampleLabel">
   <div class="offcanvas-header">
-    <h5 class="offcanvas-title" id="project-offcanvas">Offcanvas</h5>
+    <h5 class="offcanvas-title lighten-25 text-primary" id="project-offcanvas">Projects</h5>
     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
-  <div class="offcanvas-body">
-    <div>
-      Some text as placeholder. In real life you can have the elements you have chosen. Like, text, images, lists, etc.
+    <h6 class="px-3">for {{account.email}}</h6>
+  <div class="offcanvas-body container-fluid ">
+    <div class="row mx-4 border-bottom border-2 mb-2">
+      <div class="col-md-6 text-primary lighten-25">Name</div>
+      <div class="col-md-6 text-end text-primary lighten-25">Started</div>
     </div>
-    <div class="dropdown mt-3">
-      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown">
-        Dropdown button
-      </button>
-      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <li><a class="dropdown-item" href="#">Action</a></li>
-        <li><a class="dropdown-item" href="#">Another action</a></li>
-        <li><a class="dropdown-item" href="#">Something else here</a></li>
-      </ul>
+    <div class="row my-1 selectable" v-for="p in projects" :key="p.id">
+
+      <div class="col-md-6 ps-5">{{p.name}}</div>
+      <div class="col-md-6 text-end pe-5">{{ new Date(p.createdAt).toLocaleString().split(',')[0] }}</div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 text-center">
+    <div class="button btn btn-outline-primary w-40 button-40 " @click="createModal">Create Project</div>
     </div>
   </div>
 </div>
@@ -27,15 +29,32 @@
 
 
 <script>
+import { computed } from "@vue/reactivity"
+import { AppState } from "../AppState"
+import { Modal } from "bootstrap"
 export default {
   setup(){
     return {
-
+      async createModal() {
+        const modalElem = document.getElementById("createproj-modal")
+        Modal.getOrCreateInstance(modalElem).toggle()
+      },
+      account: computed(()=> AppState.account),
+      projects: computed(()=> AppState.projects)
     }
   }}
 </script>
 
 
 <style lang="scss" scoped>
+.w-40 {
+  width:40% !important
+}
+
+.button-40 {
+  top: 80%;
+  left: 30%;
+  position: absolute;
+}
 
 </style>
