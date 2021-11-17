@@ -1,8 +1,12 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-white px-3 elevation-3 roboto">
+  <nav
+    class="navbar navbar-expand-lg navbar-dark bg-white px-3 elevation-3 roboto"
+  >
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
       <div class="d-flex flex-column align-items-center">
-        <h1 class="mdi mdi-rocket-launch-outline text-primary lighten-25">PlanIt</h1>
+        <h1 class="mdi mdi-rocket-launch-outline text-primary lighten-25">
+          PlanIt
+        </h1>
       </div>
     </router-link>
     <button
@@ -17,16 +21,16 @@
       <span class="navbar-toggler-icon" />
     </button>
     <div class="collapse navbar-collapse" id="navbarText">
-      <ul class="navbar-nav me-auto">
-        <li>
-          <router-link :to="{ name: 'Project' }" class="btn text-primary lighten-25  selectable text-uppercase">
-            Projects
-          </router-link>
-        </li>
-      </ul>
+      <ul class="navbar-nav me-auto"></ul>
       <span class="navbar-text">
         <button
-          class="btn selectable text-primary text-uppercase my-2 my-lg-0 lighten-25"
+          class="
+            btn
+            selectable
+            text-primary text-uppercase
+            my-2 my-lg-0
+            lighten-25
+          "
           @click="login"
           v-if="!user.isAuthenticated"
         >
@@ -58,7 +62,11 @@
               </div>
             </router-link>
             <div
-              class="list-group-item list-group-item-action hoverable text-danger"
+              class="
+                list-group-item list-group-item-action
+                hoverable
+                text-danger
+              "
               @click="logout"
             >
               <i class="mdi mdi-logout"></i>
@@ -106,15 +114,15 @@ export default {
 a:hover {
   text-decoration: none;
 }
-.nav-link{
+.nav-link {
   text-transform: uppercase;
 }
-.navbar-nav .router-link-exact-active{
+.navbar-nav .router-link-exact-active {
   border-bottom: 2px solid var(--bs-success);
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
 }
-.roboto{
-  font-family: 'Roboto', sans-serif;
+.roboto {
+  font-family: "Roboto", sans-serif;
 }
 </style>
