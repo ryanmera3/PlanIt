@@ -12,7 +12,7 @@
       <div class="col-md-6 text-primary lighten-25">Name</div>
       <div class="col-md-6 text-end text-primary lighten-25">Started</div>
     </div>
-    <div class="row my-1 selectable" v-for="p in projects" :key="p.id">
+    <div class="row my-1 selectable" v-for="p in projects" :key="p.id" @click="Push(p.id)">
 
       <div class="col-md-6 ps-5">{{p.name}}</div>
       <div class="col-md-6 text-end pe-5">{{ new Date(p.createdAt).toLocaleString().split(',')[0] }}</div>
@@ -31,10 +31,19 @@
 <script>
 import { computed } from "@vue/reactivity"
 import { AppState } from "../AppState"
-import { Modal } from "bootstrap"
+import { Modal, Offcanvas } from "bootstrap"
+import { router } from "../router"
 export default {
   setup(){
     return {
+      Push(id) {
+       const canvasElem = document.getElementById("proj-offcanvas")
+       Offcanvas.getOrCreateInstance(canvasElem).hide()
+        router.push({
+          name: "Project",
+          params: { id: id }
+        })
+      },
       async createModal() {
         const modalElem = document.getElementById("createproj-modal")
         Modal.getOrCreateInstance(modalElem).toggle()

@@ -1,16 +1,16 @@
 <template>
   <div class="container-fluid roboto">
     <div class="row">
-      <div class="col-1">
+      <div class="col-1 p-0 ">
         <button
-          class="btn btn-primary"
+          class="btn-primary w-50 mt-4 h-10"
           type="button"
           data-bs-toggle="offcanvas"
           data-bs-target="#proj-offcanvas"
           aria-controls="offcanvasExample"
           @click="ProjectSelector"
         >
-          Button with data-bs-target
+          P
         </button>
       </div>
       <div class="col-10 text-center">
@@ -137,7 +137,7 @@ export default {
         Modal.getOrCreateInstance(modalElem).toggle()
       },
       async selectorCanvas() {
-        const canvasElem = document.getElementById('project-offcanvas')
+        const canvasElem = document.getElementById('proj-offcanvas')
         Modal.getOrCreateInstance(canvasElem).toggle()
       },
       async removeProject(id) {
@@ -174,6 +174,9 @@ export default {
       object-position: center;
     }
   }
+}
+.h-10{
+  height: 10%;
 }
 .roboto {
   font-family: "Roboto", sans-serif;
