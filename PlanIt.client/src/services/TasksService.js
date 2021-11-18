@@ -6,6 +6,7 @@ import { api } from "./AxiosService"
 class TasksService {
   async createTask(body, sprintId, projectId) {
     body.sprintId = sprintId
+    body.isComplete = false
     const res = await api.post(`api/projects/${projectId}/tasks`, body)
     AppState.tasks.unshift(res.data)
   }
@@ -17,11 +18,16 @@ class TasksService {
   async checkTask(body, projectId) {
     body.isComplete = !body.isComplete
     await api.put(`/api/projects/${projectId}/tasks/${body.id}`, body)
-    this.getTasks(projectId)
+    await this.getTasks(projectId)
   }
   async deleteTask(taskId, projectId) {
     await api.delete(`api/projects/${projectId}/tasks/${taskId}`)
-    this.getTasks(projectId)
+    await this.getTasks(projectId)
+  }
+  async editTask(projectId, taskId, body) {
+    const res = await api.put(`api/projects/${projectId}/tasks/${taskId}`, body)
+    logger.log('HEllo friend', res.data)
+    await this.getTasks(projectId)
   }
 }
 

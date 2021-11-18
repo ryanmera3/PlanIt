@@ -1,7 +1,6 @@
 <template>
   <div
     class="modal fade"
-    id="createtask-modal"
     tabindex="-1"
     aria-labelledby="exampleModalLabel"
     aria-hidden="true"
@@ -81,7 +80,7 @@ export default {
 
       async createTask() {
         await tasksService.createTask(state.editable, props.sprintId, route.params.id)
-        const modalElem = document.getElementById('createtask-modal')
+        const modalElem = document.getElementById('createtask-modal-' + props.sprintId)
         Modal.getOrCreateInstance(modalElem).toggle()
         state.editable = {}
       }

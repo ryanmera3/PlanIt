@@ -33,7 +33,7 @@
               <button
                 class="btn btn-outline-primary"
                 data-bs-toggle="modal"
-                data-bs-target="#createtask-modal"
+                :data-bs-target="'#createtask-modal-' + sprint.id"
               >
                 Add Task
               </button>
@@ -47,7 +47,10 @@
         </div>
         <Drawer :sprint="sprint" />
       </div>
-      <CreateTaskModal :sprintId="sprint.id" />
+      <CreateTaskModal
+        :sprintId="sprint.id"
+        :id="'createtask-modal-' + sprint.id"
+      />
     </div>
   </div>
 </template>

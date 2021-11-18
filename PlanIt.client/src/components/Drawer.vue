@@ -26,7 +26,7 @@ export default {
       tasksService.getTasks(route.params.id)
     })
     return {
-      Tasks: computed(() => AppState.tasks)
+      Tasks: computed(() => AppState.tasks.filter(t => t.sprintId == props.sprint.id))
     }
   },
 }

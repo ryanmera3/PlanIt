@@ -28,6 +28,7 @@ export class TasksController extends BaseController {
       req.body.projectId = req.params.projectid
       req.body.creatorId = req.userInfo.id
       req.body.creator = req.userInfo
+      req.body.isCompleted = false
       const newTask = await tasksService.createTask(req.body)
       newTask.creator = req.userInfo
       return res.send(newTask)

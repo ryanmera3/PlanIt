@@ -4,10 +4,9 @@
   </header>
   <main>
     <router-view />
-    <TaskDetails />
     <CreateProjectModal />
     <ProjectSelector />
-    <EditProjectModal/>
+    <EditProjectModal />
   </main>
 </template>
 

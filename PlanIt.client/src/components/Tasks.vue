@@ -7,13 +7,13 @@
             <input
               type="checkbox"
               class="form-check-input border-primary"
-              :checked="!task.isComplete"
+              :checked="task.isComplete"
               @click="checkTask"
             />
           </div>
         </div>
         <div class="col-8">
-          <h4 v-if="task.isComplete">
+          <h4 v-if="!task.isComplete">
             {{ task.name }}
           </h4>
           <h4 style="text-decoration: line-through" v-else>
@@ -23,15 +23,15 @@
         <div class="col-1"></div>
         <div class="col-1 d-flex">
           <button
-          class="btn-primary   border-0"
-          type="button"
-          data-bs-toggle="offcanvas"
-          data-bs-target="#task-details"
-          aria-controls="offcanvasExample"
-          @click="TaskCanvas"
-        >
-          Edit Task
-        </button>
+            class="btn-primary border-0"
+            type="button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#task-details"
+            aria-controls="offcanvasExample"
+            @click="TaskCanvas"
+          >
+            Edit Task
+          </button>
         </div>
         <div class="col-1">
           <button class="btn btn-outline-danger" @click="deleteTask">
@@ -41,6 +41,7 @@
       </div>
     </div>
   </div>
+  <TaskDetails :task="task" />
 </template>
 <script>
 import { useRoute } from "vue-router"
