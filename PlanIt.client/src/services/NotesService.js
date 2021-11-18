@@ -8,11 +8,11 @@ class NotesService {
   }
   async createNotes(body){
     const res = await api.post(`/api/projects/${project.id}/notes`, body)
-    AppState.notes.unshift(body)
+    AppState.notes.unshift(res.data)
   }
 
   async deleteNotes(projectId, noteId){
-    const res = await api.delete(`/api/projects/${projectId}/notes/${noteId}`)
+    await api.delete(`/api/projects/${projectId}/notes/${noteId}`)
     AppState.notes = AppState.notes.filter(n => n.id !== noteId)
   }
 }
