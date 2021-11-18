@@ -2,26 +2,7 @@
   <div class="container-fluid roboto">
     <div class="row">
       <div class="col-1 p-0 d-flex flex-column">
-        <button
-          class="btn-primary w-50 mt-4 h-10 border-0"
-          type="button"
-          data-bs-toggle="offcanvas"
-          data-bs-target="#proj-offcanvas"
-          aria-controls="offcanvasExample"
-          @click="ProjectSelector"
-        >
-          P
-        </button>
-        <button
-          class="btn-secondary w-50 mt-2 h-10 border-0"
-          type="button"
-          data-bs-toggle="editproj-modal"
-          data-bs-target="#editproj-modal"
-          aria-controls="offcanvasExample"
-          @click="editModal"
-        >
-          <i class="mdi mdi-cog text-primary"></i>
-        </button>
+        <SideButtons/>
       </div>
       <div class="col-10 text-center">
         <div class="card mt-5 elevation-3">
