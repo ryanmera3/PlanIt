@@ -6,7 +6,7 @@
           <div class="form-check form-switch">
             <input
               type="checkbox"
-              class="form-check-input"
+              class="form-check-input border-primary"
               :checked="!task.isComplete"
               @click="checkTask"
             />
