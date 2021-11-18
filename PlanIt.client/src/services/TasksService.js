@@ -20,7 +20,8 @@ class TasksService {
     this.getTasks(projectId)
   }
   async deleteTask(taskId, projectId) {
-    logger.log('deleted')
+    await api.delete(`api/projects/${projectId}/tasks/${taskId}`)
+    this.getTasks(projectId)
   }
 }
 
