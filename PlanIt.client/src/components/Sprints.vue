@@ -25,7 +25,7 @@
                   </h3>
                 </div>
                 <div class="col-4">
-                  <h4>Weight: 10</h4>
+                  <h4>Weight: {{totalWeight}}</h4>
                 </div>
               </div>
             </div>
@@ -55,13 +55,14 @@
   </div>
 </template>
 <script>
-import { onMounted } from "@vue/runtime-core"
+import { computed, onMounted } from "@vue/runtime-core"
 import { logger } from "../utils/Logger"
 import { sprintsService } from "../services/SprintsService"
 import Pop from "../utils/Pop"
 import { useRoute } from "vue-router"
 import { tasksService } from "../services/TasksService"
 import { Modal } from "bootstrap"
+import { AppState } from "../AppState"
 export default {
   props: { sprint: { type: Object, required: true } },
   setup(props) {
@@ -70,13 +71,25 @@ export default {
       logger.log('prop', props.sprint)
     })
     return {
-      deleteSprint() {
-        sprintsService.deleteSprint(route.params.id, props.sprint.id)
+      async deleteSprint() {
+        await sprintsService.deleteSprint(route.params.id, props.sprint.id)
         Pop.toast('Delted')
       },
+
+      totalWeight: computed(()=> {
+        let count = 0
+        AppState.tasks.forEach(t=> {
+          if(t.sprintId == props.sprint.id){
+            count += t.weight
+          }
+          })
+          return count
+      })
+      
     }
-  },
-}
+    }
+  }
+
 </script>
 <style scoped>
 </style>
