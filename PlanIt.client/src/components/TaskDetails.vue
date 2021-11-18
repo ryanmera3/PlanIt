@@ -8,12 +8,19 @@
   <div class="offcanvas-header border-bottom border-1 border-primary">
     <button type="button" class="btn btn-close bg-white border-0 selectable text-reset" data-bs-dismiss="offcanvastask"></button>
     <h5 class="offcanvas-title lighten-25 text-primary  lighten-25 ms-2" id="offcanvasRight">Sprint Name > Task Name</h5>
-    <button type="button" class="mdi mdi-pencil bg-white border-0 selectable text-reset" data-bs-dismiss="offcanvastask"></button>
+    <button type="button" class="mdi mdi-pencil bg-white border-0 selectable text-reset" @click="showEdit=!showEdit">
+      
+    </button>
   </div>
   <div class="offcanvas-body container-fluid ">
     <div class="row mb-4 ms-2">
+      <div class="col-md-12" >
+      <TaskDetailsEdit v-if="showEdit"/> 
+      </div>
       <div class="col-md-12 ">Status</div>
     </div>
+    
+    
     <div class="row  ms-2">
       <div class="col-12">
         <div class="row mb-5">
@@ -26,8 +33,9 @@
 
           </div>
         </div>
+        <TaskDetailsButtons v-if="showEdit"/>
         <div class="row justify-content-center mb-4 border-bottom border-1 ">
-          <div class="col-md-6 text-center text-primary">Notes</div>
+          <div class="col-md-6 text-center text-primary lighten-25">Notes</div>
         </div>
         <div class="row">
           <div class="col-md-12 mb-1">
@@ -60,11 +68,13 @@
 
 
 <script>
-import { computed } from "@vue/reactivity"
+import { computed, ref } from "@vue/reactivity"
 import { AppState } from "../AppState"
 export default {
   setup(){
+    const showEdit = ref(false)
     return {
+      showEdit,
       tasks: computed(()=> AppState.tasks),
       sprints: computed(()=> AppState.sprints),
       projects: computed(()=> AppState.projects),
