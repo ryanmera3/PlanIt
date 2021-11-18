@@ -1,7 +1,9 @@
 <template>
   <div class="project container-fluid">
     <div class="row">
-      <div class="col-1"></div>
+      <div class="col-1 p-0 d-flex flex-column">
+        <SideButtons />
+      </div>
       <div class="col-10 flex-column">
         <ProjectInfo />
       </div>
