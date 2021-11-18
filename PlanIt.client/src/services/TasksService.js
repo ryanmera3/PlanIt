@@ -18,7 +18,9 @@ class TasksService {
     body.isComplete = !body.isComplete
     await api.put(`/api/projects/${projectId}/tasks/${body.id}`, body)
     this.getTasks(projectId)
-
+  }
+  async deleteTask(taskId, projectId) {
+    logger.log('deleted')
   }
 }
 

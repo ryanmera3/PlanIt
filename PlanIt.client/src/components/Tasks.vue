@@ -24,7 +24,7 @@
           <AddNote :taskId="task.id" />
         </div>
         <div class="col-1">
-          <button class="btn btn-outline-danger">
+          <button class="btn btn-outline-danger" @click="deleteTask">
             <i class="mdi mdi-delete" />
           </button>
         </div>
@@ -35,11 +35,20 @@
 <script>
 import { useRoute } from "vue-router"
 import { tasksService } from "../services/TasksService"
+import { logger } from "../utils/Logger"
+import Pop from "../utils/Pop"
 export default {
   props: { task: { type: Object, required: true } },
   setup(props) {
     const route = useRoute()
     return {
+      async deleteTask() {
+        if (window.confirm('are you sure')) {
+          await tasksService.deleteTask(props.task.id, route.params.id)
+        } else {
+          return
+        }
+      },
       async checkTask() {
         await tasksService.checkTask(props.task, route.params.id)
       }
