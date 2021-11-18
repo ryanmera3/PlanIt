@@ -20,8 +20,18 @@
             {{ task.name }}
           </h4>
         </div>
-        <div class="col-2">
-          <AddNote :taskId="task.id" />
+        <div class="col-1"></div>
+        <div class="col-1 d-flex">
+          <button
+          class="btn-primary   border-0"
+          type="button"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#task-details"
+          aria-controls="offcanvasExample"
+          @click="TaskCanvas"
+        >
+          Edit Task
+        </button>
         </div>
         <div class="col-1">
           <button class="btn btn-outline-danger" @click="deleteTask">
