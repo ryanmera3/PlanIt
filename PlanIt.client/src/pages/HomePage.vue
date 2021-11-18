@@ -3,16 +3,7 @@
     <div class="row">
       <div class="col-1 p-0 d-flex flex-column">
         <SideButtons/>
-        <button
-          class="btn-primary w-50 mt-4 h-10 border-0"
-          type="button"
-          data-bs-toggle="offcanvas"
-          data-bs-target="#task-details"
-          aria-controls="offcanvasExample"
-          @click="TaskCanvas"
-        >
-          Task
-        </button>
+        
       </div>
       <div class="col-10 text-center">
         <div class="card mt-5 elevation-3">
