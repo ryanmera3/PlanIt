@@ -7,6 +7,7 @@
             <input
               type="checkbox"
               class="form-check-input border-primary"
+              title="iscomplete"
               :checked="task.isComplete"
               @click="checkTask"
             />
