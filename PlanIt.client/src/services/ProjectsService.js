@@ -8,7 +8,6 @@ class ProjectsService {
     const res = await api.get('api/projects/')
     logger.log(res.data)
     AppState.projects = res.data
-
   }
   async createProject(body) {
     const res = await api.post('api/projects', body)
