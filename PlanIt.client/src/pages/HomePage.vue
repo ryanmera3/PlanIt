@@ -142,7 +142,10 @@ export default {
       },
       async removeProject(id) {
         try {
-          await projectsService.removeProject(id)
+          if (window.confirm('Are you sure you want to delete this')) {
+
+            await projectsService.removeProject(id)
+          }
         } catch (error) {
           logger.log(error)
           Pop.toast(error.message)

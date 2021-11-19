@@ -77,9 +77,13 @@ export default {
     })
     return {
       async deleteSprint() {
-        await sprintsService.deleteSprint(route.params.id, props.sprint.id)
-        Pop.toast('Delted')
+        if (window.confirm('Are you sure you want to delete this')) {
+
+          await sprintsService.deleteSprint(route.params.id, props.sprint.id)
+          Pop.toast('Deleted')
+        }
       },
+      projects: computed(() => AppState.projects),
 
       totalWeight: computed(() => {
         let count = 0
@@ -89,7 +93,8 @@ export default {
           }
         })
         return count
-      })
+      }),
+
 
     }
   }

@@ -15,9 +15,9 @@
 
 
 <script>
-import { onMounted } from "@vue/runtime-core"
+import { computed, onMounted } from "@vue/runtime-core"
 import { projectsService } from "../services/ProjectsService"
-import { useRoute } from "vue-router"
+import { useRoute, useRouter } from "vue-router"
 import { logger } from "../utils/Logger"
 import { AppState } from "../AppState"
 import { tasksService } from "../services/TasksService"
@@ -28,7 +28,13 @@ export default {
       projectsService.setActive(route.params.id)
       tasksService.getTasks(route.params.id)
     })
-    return {}
+    return {
+      tasks: computed(() => AppState.tasks),
+      projects: computed(() => AppState.projects),
+      sprints: computed(() => AppState.sprints),
+      notes: computed(() => AppState.notes),
+      activeProject: computed(() => AppState.activeProject)
+    }
   }
 }
 </script>
