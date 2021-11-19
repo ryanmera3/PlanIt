@@ -9,7 +9,7 @@ class NotesService {
   async createNotes(taskId, projectId, body) {
     body.taskId = taskId
     const res = await api.post(`/api/projects/${projectId}/notes`, body)
-    AppState.notes.unshift(res.data)
+    this.getNotes(projectId)
   }
 
   async deleteNotes(projectId, noteId) {

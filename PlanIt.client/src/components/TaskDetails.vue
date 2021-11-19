@@ -46,7 +46,7 @@
                 <form @submit="makeNote">
                   <div class="col-md-12 d-flex mb-2">
                     <input
-                      v-model="state.editable.name"
+                      v-model="state.editable.body"
                       type="text"
                       placeholder="Say Something..."
                       class="border border-1 border-light w-75"

@@ -1,6 +1,6 @@
 <template>
-  <div class="card p-3 mt-2">
-    <div class="card-body">
+  <div class="card p-3 mt-2 elevation-3">
+    <div class="card-title">
       <div class="row">
         <div class="col-1">
           <div class="form-check form-switch">
@@ -18,10 +18,9 @@
           </h4>
           <h4 style="text-decoration: line-through" v-else>
             {{ task.name }}
-          
           </h4>
         </div>
-          <h5 class="col-4 d-flex">{{task.weight}}</h5>
+        <h5 class="col-4 d-flex">{{ task.weight }}</h5>
         <div class="col-1"></div>
         <div class="col-1 d-flex">
           <button
@@ -42,16 +41,28 @@
         </div>
       </div>
     </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-body">
+              <Note :note="n" v-for="n in Notes" :key="n.id" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
   <TaskDetails :task="task" />
 </template>
 <script>
-import { onMounted } from "@vue/runtime-core"
+import { computed, onMounted } from "@vue/runtime-core"
 import { useRoute } from "vue-router"
 import { tasksService } from "../services/TasksService"
 import { logger } from "../utils/Logger"
 import Pop from "../utils/Pop"
 import { notesService } from "../services/NotesService"
+import { AppState } from "../AppState"
 export default {
   props: { task: { type: Object, required: true } },
   setup(props) {
@@ -69,8 +80,8 @@ export default {
       },
       async checkTask() {
         await tasksService.checkTask(props.task, route.params.id)
-      }
-
+      },
+      Notes: computed(() => AppState.notes.filter(n => props.task.id === n.taskId))
     }
 
   },
