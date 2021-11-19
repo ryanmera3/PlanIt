@@ -26,6 +26,7 @@ export default {
     const route = useRoute();
     onMounted(async () => {
       projectsService.setActive(route.params.id)
+      tasksService.getTasks(route.params.id)
     })
     return {}
   }

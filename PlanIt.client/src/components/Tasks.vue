@@ -12,14 +12,16 @@
             />
           </div>
         </div>
-        <div class="col-8">
+        <div class="col-4 d-flex">
           <h4 v-if="!task.isComplete">
             {{ task.name }}
           </h4>
           <h4 style="text-decoration: line-through" v-else>
             {{ task.name }}
+          
           </h4>
         </div>
+          <h5 class="col-4 d-flex">{{task.weight}}</h5>
         <div class="col-1"></div>
         <div class="col-1 d-flex">
           <button
