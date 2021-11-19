@@ -10,6 +10,9 @@
             <h5>
               {{ Project.description }}
             </h5>
+            <button class="btn btn-outline-primary" @click="deleteProject">
+              <i class="mdi mdi-delete" title="delete Project" />
+            </button>
             <button
               class="btn btn-outline-primary"
               data-bs-target="#sprintModal"
@@ -39,9 +42,10 @@ import Pop from "../utils/Pop"
 import { useRoute } from "vue-router"
 import { Modal } from "bootstrap"
 import { logger } from "../utils/Logger"
+import { projectsService } from "../services/ProjectsService"
+import { router } from "../router"
 export default {
   setup() {
-
     const route = useRoute()
     onMounted(async () => {
       try {
@@ -52,6 +56,16 @@ export default {
       }
     })
     return {
+      async deleteProject() {
+        try {
+          await projectsService.removeProject(route.params.id)
+          router.push({
+            name: "Home"
+          })
+        } catch (error) {
+          Pop.toast(error)
+        }
+      },
       async createSprint() {
         try {
           Modal.getOrCreateInstance(document.getElementById(""))
