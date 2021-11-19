@@ -2,15 +2,14 @@
   <div class="container-fluid roboto">
     <div class="row">
       <div class="col-1 p-0 d-flex flex-column">
-        <SideButtons/>
-        
+        <SideButtons />
       </div>
       <div class="col-10 text-center">
         <div class="card mt-5 elevation-3">
           <div class="card-body">
             <div class="row justify-content-between">
               <div class="col-md-4 text-start mx-4 text-primary lighten-25">
-                <h3>Projects</h3>
+                <h1>Projects</h1>
                 <p>a list of all the projects for</p>
               </div>
               <div class="col-md-4 text-end mx-4">
@@ -85,11 +84,12 @@
                       align-items-middle
                     "
                   >
-                    <h6 class="align-self-end d-flex mx-3">
+                    <p class="align-self-end d-flex mx-3">
                       {{ new Date(p.createdAt).toLocaleString() }}
-                    </h6>
+                    </p>
                     <button
                       class="btn btn-outline-danger mdi mdi-delete selectable"
+                      aria-label="homepagedelete"
                       @click="removeProject(p.id)"
                     ></button>
                   </div>
@@ -124,7 +124,7 @@ export default {
           params: { id: id }
         })
       },
-      async editModal(){
+      async editModal() {
         const modalElem = document.getElementById("editproj-modal")
         Modal.getOrCreateInstance(modalElem).toggle()
       },
@@ -136,7 +136,7 @@ export default {
         const canvasElem = document.getElementById('proj-offcanvas')
         Modal.getOrCreateInstance(canvasElem).toggle()
       },
-      async taskCanvas(){
+      async taskCanvas() {
         const canvasElem = document.getElementById('task-details')
         Modal.getOrCreateInstance(canvasElem).toggle()
       },
@@ -175,7 +175,7 @@ export default {
     }
   }
 }
-.h-10{
+.h-10 {
   height: 10%;
 }
 .roboto {

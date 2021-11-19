@@ -25,7 +25,7 @@
                   </h3>
                 </div>
                 <div class="col-4">
-                  <h4>Weight: {{totalWeight}}</h4>
+                  <h4>Weight: {{ totalWeight }}</h4>
                 </div>
               </div>
             </div>
@@ -34,12 +34,17 @@
                 class="btn btn-outline-primary"
                 data-bs-toggle="modal"
                 :data-bs-target="'#createtask-modal-' + sprint.id"
+                aria-label="createtask"
               >
                 Add Task
               </button>
             </div>
             <div class="col-1 d-flex justify-content-end">
-              <button class="btn btn-outline-danger" @click="deleteSprint">
+              <button
+                class="btn btn-outline-danger"
+                aria-label="delete sprint"
+                @click="deleteSprint"
+              >
                 <i class="mdi mdi-delete"></i>
               </button>
             </div>
@@ -76,19 +81,19 @@ export default {
         Pop.toast('Delted')
       },
 
-      totalWeight: computed(()=> {
+      totalWeight: computed(() => {
         let count = 0
-        AppState.tasks.forEach(t=> {
-          if(t.sprintId == props.sprint.id){
+        AppState.tasks.forEach(t => {
+          if (t.sprintId == props.sprint.id) {
             count += t.weight
           }
-          })
-          return count
+        })
+        return count
       })
-      
-    }
+
     }
   }
+}
 
 </script>
 <style scoped>
