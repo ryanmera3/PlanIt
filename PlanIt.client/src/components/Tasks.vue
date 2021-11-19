@@ -20,7 +20,7 @@
             {{ task.name }}
           </h4>
         </div>
-        <h5 class="col-4 d-flex">{{ task.weight }}</h5>
+        <h5 class="col-4 d-flex">Weight: {{ task.weight }}</h5>
         <div class="col-1"></div>
         <div class="col-1 d-flex">
           <button

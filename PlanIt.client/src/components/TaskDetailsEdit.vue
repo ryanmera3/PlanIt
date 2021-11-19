@@ -44,7 +44,6 @@
                   <li>
                     <a
                       class="dropdown-item"
-                      href="#"
                       @click="moveTasks(s, s.id)"
                       v-for="s in sprints"
                       :key="s.id"
@@ -87,6 +86,7 @@ export default {
       },
       async moveTasks(s) {
         await tasksService.moveTasks(s, props.task.id, route.params.id)
+        this.dropToggle()
       },
       sprints: computed(() => AppState.sprints)
     }
