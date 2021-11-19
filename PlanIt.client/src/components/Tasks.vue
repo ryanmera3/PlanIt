@@ -68,7 +68,7 @@ import Pop from "../utils/Pop"
 import { notesService } from "../services/NotesService"
 import { AppState } from "../AppState"
 export default {
-  props: { task: { type: Object, required: true }, sprint: { type: Object, required: true } },
+  props: { task: { type: Object, required: true } },
   setup(props) {
     onMounted(async () => {
       await notesService.getNotes(route.params.id)
@@ -85,13 +85,7 @@ export default {
       async checkTask() {
         await tasksService.checkTask(props.task, route.params.id)
       },
-      async prepToMove() {
-        try {
-          tasksService.prepToMove(props.task, props.sprint.id)
-        } catch (error) {
-          logger.log(error)
-        }
-      },
+
       Notes: computed(() => AppState.notes.filter(n => props.task.id === n.taskId))
     }
 
