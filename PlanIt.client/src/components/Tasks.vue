@@ -38,6 +38,7 @@
           <button
             class="btn btn-outline-danger"
             aria-label="delete task"
+            title="delete task"
             @click="deleteTask"
           >
             <i class="mdi mdi-delete" />

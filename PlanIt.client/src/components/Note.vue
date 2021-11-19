@@ -12,7 +12,11 @@
           </h5>
         </div>
         <div class="col-1">
-          <button class="btn btn-outline-danger" @click="deleteTask">
+          <button
+            class="btn btn-outline-danger"
+            @click="deleteTask"
+            title="deleteNote"
+          >
             <i class="mdi mdi-delete" />
           </button>
         </div>

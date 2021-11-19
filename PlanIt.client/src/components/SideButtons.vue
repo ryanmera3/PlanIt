@@ -6,6 +6,7 @@
     data-bs-target="#proj-offcanvas"
     aria-controls="offcanvasExample"
     aria-label="sidebutton1"
+    title="projects"
     @click="ProjectSelector"
   >
     P
@@ -17,6 +18,7 @@
     data-bs-target="#editproj-modal"
     aria-controls="offcanvasExample"
     aria-label="sidebutton2"
+    title="edit-project"
     @click="editModal"
   >
     <i class="mdi mdi-cog text-primary"></i>

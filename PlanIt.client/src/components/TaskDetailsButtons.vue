@@ -2,13 +2,18 @@
   <div class="taskbuttons">
     <div class="row my-3">
       <div class="col-md-12 d-flex justify-content-end">
-        <button class="btn btn-outline-dark mx-1" aria-label="cancel">
+        <button
+          class="btn btn-outline-dark mx-1"
+          aria-label="cancel"
+          title="cancel"
+        >
           Cancel
         </button>
         <button
           type="submit"
           class="btn btn-outline-primary mx-1"
           aria-label="save"
+          title="save"
         >
           Save
         </button>

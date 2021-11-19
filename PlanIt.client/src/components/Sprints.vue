@@ -43,6 +43,7 @@
               <button
                 class="btn btn-outline-danger"
                 aria-label="delete sprint"
+                title="delete sprint"
                 @click="deleteSprint"
               >
                 <i class="mdi mdi-delete"></i>

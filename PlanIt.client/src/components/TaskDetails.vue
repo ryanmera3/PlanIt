@@ -8,11 +8,6 @@
         aria-labelledby="offcanvasExampleLabel"
       >
         <div class="offcanvas-header border-bottom border-1 border-primary">
-          <button
-            type="button"
-            class="btn btn-close bg-white border-0 selectable text-reset"
-            data-bs-dismiss="offcanvastask"
-          ></button>
           <h5
             class="offcanvas-title lighten-25 text-primary lighten-25 ms-2"
             id="offcanvasRight"
@@ -22,6 +17,7 @@
           <button
             type="button"
             class="mdi mdi-pencil bg-white border-0 selectable text-reset"
+            title="edittask"
             @click="showEdit = !showEdit"
           ></button>
         </div>
@@ -51,7 +47,11 @@
                       placeholder="Say Something..."
                       class="border border-1 border-light w-75"
                     />
-                    <button type="submit" class="btn btn-outline-primary">
+                    <button
+                      type="submit"
+                      class="btn btn-outline-primary"
+                      title="create note"
+                    >
                       <i class="mdi mdi-play"></i>
                     </button>
                   </div>

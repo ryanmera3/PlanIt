@@ -90,6 +90,7 @@
                     <button
                       class="btn btn-outline-danger mdi mdi-delete selectable"
                       aria-label="homepagedelete"
+                      title="deleteproject"
                       @click="removeProject(p.id)"
                     ></button>
                   </div>
