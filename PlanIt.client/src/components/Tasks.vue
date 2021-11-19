@@ -26,7 +26,7 @@
             class="btn-primary border-0"
             type="button"
             data-bs-toggle="offcanvas"
-            data-bs-target="#task-details"
+            :data-bs-target="'#task-details-' + `${task.id}`"
             aria-controls="offcanvasExample"
             @click="TaskCanvas"
           >
@@ -44,13 +44,18 @@
   <TaskDetails :task="task" />
 </template>
 <script>
+import { onMounted } from "@vue/runtime-core"
 import { useRoute } from "vue-router"
 import { tasksService } from "../services/TasksService"
 import { logger } from "../utils/Logger"
 import Pop from "../utils/Pop"
+import { notesService } from "../services/NotesService"
 export default {
   props: { task: { type: Object, required: true } },
   setup(props) {
+    onMounted(async () => {
+      await notesService.getNotes(route.params.id)
+    })
     const route = useRoute()
     return {
       async deleteTask() {

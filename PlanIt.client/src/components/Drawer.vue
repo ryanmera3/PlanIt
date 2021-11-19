@@ -5,6 +5,7 @@
     data-bs-parent="#accordianFlushParent"
   >
     <div class="accordian-body">
+      tasks here
       <div class="row" v-for="t in Tasks" :key="t.id">
         <div class="col-12">
           <Tasks :task="t" />
@@ -26,6 +27,7 @@ export default {
       tasksService.getTasks(route.params.id)
     })
     return {
+      route,
       Tasks: computed(() => AppState.tasks.filter(t => t.sprintId == props.sprint.id))
     }
   },

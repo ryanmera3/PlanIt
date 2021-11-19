@@ -20,6 +20,7 @@ import { projectsService } from "../services/ProjectsService"
 import { useRoute } from "vue-router"
 import { logger } from "../utils/Logger"
 import { AppState } from "../AppState"
+import { tasksService } from "../services/TasksService"
 export default {
   setup() {
     const route = useRoute();

@@ -2,16 +2,17 @@ import { AppState } from "../AppState"
 import { api } from "./AxiosService"
 
 class NotesService {
-  async getNotes(projectId){
+  async getNotes(projectId) {
     const res = await api.get(`/api/projects/${projectId}/notes`)
-    AppState.tasks = res.data
+    AppState.notes = res.data
   }
-  async createNotes(body){
-    const res = await api.post(`/api/projects/${project.id}/notes`, body)
+  async createNotes(taskId, projectId, body) {
+    body.taskId = taskId
+    const res = await api.post(`/api/projects/${projectId}/notes`, body)
     AppState.notes.unshift(res.data)
   }
 
-  async deleteNotes(projectId, noteId){
+  async deleteNotes(projectId, noteId) {
     await api.delete(`/api/projects/${projectId}/notes/${noteId}`)
     AppState.notes = AppState.notes.filter(n => n.id !== noteId)
   }
