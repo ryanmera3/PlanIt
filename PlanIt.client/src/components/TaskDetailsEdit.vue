@@ -1,6 +1,6 @@
 <template>
   <div class="taskdetails-edit">
-    <form @submit="editTask">
+    <form @submit.prevent="editTask">
       <div class="col-md-12">
         <div class="row my-3">
           <div class="col-md-11">
@@ -30,20 +30,28 @@
           <div class="col-md-8">
             <div class="dropdown">
               <p class="mb-2">Sprint<i class="mdi mdi-walk"></i></p>
-              <button
-                class="btn btn-secondary dropdown-toggle"
-                type="button"
-                id="dropdownMenuButton"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                Dropdown button
-              </button>
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Something else here</a>
+              <div class="dropdown">
+                <button
+                  class="btn btn-secondary dropdown-toggle"
+                  type="button"
+                  id="dropdownMenuButton1"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Sprints
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      href="#"
+                      @click="moveTasks(s, s.id)"
+                      v-for="s in sprints"
+                      :key="s.id"
+                      >{{ s.name }}</a
+                    >
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
@@ -58,11 +66,13 @@
 
 
 <script>
-import { reactive } from "@vue/reactivity"
+import { computed, reactive } from "@vue/reactivity"
 import { useRoute } from "vue-router"
 import { tasksService } from "../services/TasksService"
+import { AppState } from "../AppState"
+import { Dropdown } from "bootstrap"
 export default {
-  props: { task: { type: Object, required: true } },
+  props: { task: { type: Object, required: true }, sprint: { type: Object, required: true } },
   setup(props) {
     const route = useRoute()
     const state = reactive({ editable: {} })
@@ -70,7 +80,15 @@ export default {
       state,
       async editTask() {
         await tasksService.editTask(route.params.id, props.task.id, state.editable)
-      }
+      },
+      async dropToggle() {
+        let dropElem = document.getElementById('dropdown')
+        Dropdown.getOrCreateInstance(dropElem).toggle()
+      },
+      async moveTasks(s) {
+        await tasksService.moveTasks(s, props.task.id, route.params.id)
+      },
+      sprints: computed(() => AppState.sprints)
     }
   }
 }

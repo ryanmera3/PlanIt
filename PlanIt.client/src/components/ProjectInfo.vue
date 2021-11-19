@@ -41,6 +41,7 @@ import { Modal } from "bootstrap"
 import { logger } from "../utils/Logger"
 export default {
   setup() {
+
     const route = useRoute()
     onMounted(async () => {
       try {

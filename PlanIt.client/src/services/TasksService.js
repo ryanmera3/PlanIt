@@ -29,6 +29,17 @@ class TasksService {
     logger.log('HEllo friend', res.data)
     await this.getTasks(projectId)
   }
+  async prepToMove(task, oldSprintId){
+    task.sprintId = oldSprintId
+    AppState.taskMove = task
+  }
+  async moveTasks(s, taskId, projectId){
+    const res = await api.put(`api/projects/${projectId}/tasks/${taskId}`, {sprintId: s.id})
+    logger.log(res.data)
+    await this.getTasks(projectId)
+  }
+
+  async 
 }
 
 export const tasksService = new TasksService

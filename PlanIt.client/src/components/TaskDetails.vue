@@ -1,6 +1,6 @@
 <template>
   <div class="task-details">
-    <form>
+    <form @submit.prevent>
       <div
         class="offcanvas offcanvas-end w-25"
         tabindex="-1"
@@ -43,7 +43,7 @@
               </div>
               <div class="row">
                 <div class="col-md-12 mb-1">Add a Note</div>
-                <form @submit="makeNote">
+                <form @submit.prevent="makeNote">
                   <div class="col-md-12 d-flex mb-2">
                     <input
                       v-model="state.editable.body"
